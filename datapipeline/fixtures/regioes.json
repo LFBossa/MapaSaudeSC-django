@@ -1,0 +1,114 @@
+[
+ {
+  "model": "mapa.Regiao",
+  "pk": "Alto Uruguai Catarinense",
+  "fields": {
+   "nome": "Alto Uruguai Catarinense"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Alto Vale do Itajaí",
+  "fields": {
+   "nome": "Alto Vale do Itajaí"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Alto Vale do Rio do Peixe",
+  "fields": {
+   "nome": "Alto Vale do Rio do Peixe"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Carbonífera",
+  "fields": {
+   "nome": "Carbonífera"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Extremo Oeste",
+  "fields": {
+   "nome": "Extremo Oeste"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Extremo Sul Catarinense",
+  "fields": {
+   "nome": "Extremo Sul Catarinense"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Foz do Rio Itajaí",
+  "fields": {
+   "nome": "Foz do Rio Itajaí"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Grande Florianópolis",
+  "fields": {
+   "nome": "Grande Florianópolis"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Laguna",
+  "fields": {
+   "nome": "Laguna"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Meio Oeste",
+  "fields": {
+   "nome": "Meio Oeste"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Médio Vale do Itajaí",
+  "fields": {
+   "nome": "Médio Vale do Itajaí"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Nordeste",
+  "fields": {
+   "nome": "Nordeste"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Oeste",
+  "fields": {
+   "nome": "Oeste"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Planalto Norte",
+  "fields": {
+   "nome": "Planalto Norte"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Serra Catarinense",
+  "fields": {
+   "nome": "Serra Catarinense"
+  }
+ },
+ {
+  "model": "mapa.Regiao",
+  "pk": "Xanxerê",
+  "fields": {
+   "nome": "Xanxerê"
+  }
+ }
+]

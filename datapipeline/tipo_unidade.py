@@ -7,7 +7,7 @@ def tratatexto(texto: str) -> str:
     return " ".join(array_processado)
 
 
-with open('tipo_unidade.csv') as fp:
+with open('input/tipo_unidade.csv') as fp:
     reader = csv.DictReader(fp)
     for row in reader:
         print(f'({row["cod"]} , \"{tratatexto(row["tipo_unidade"])}\"),')
