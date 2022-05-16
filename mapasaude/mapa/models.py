@@ -1,5 +1,5 @@
 from django.db import models
-from djgeojson.fields import PointField
+from djgeojson.fields import PointField, PolygonField
 
 
 class Estabelecimento(models.Model):
@@ -52,10 +52,12 @@ class Estabelecimento(models.Model):
 
 
 class Endereco(models.Model):
+    cnes = models.IntegerField(primary_key=True)
     logradouro = models.CharField(max_length=250)
     numero = models.IntegerField()
     bairro = models.CharField(max_length=100)
-    municipio = models.ForeignKey("Municipio")
+    cep = models.CharField(max_length=8)
+    municipio = models.ForeignKey("Municipio",on_delete=models.DO_NOTHING)
     localizacao = PointField()
 
     def __str__(self) -> str:
@@ -65,14 +67,14 @@ class Endereco(models.Model):
 class Municipio(models.Model):
     ibge = models.IntegerField(primary_key=True)
     nome = models.CharField(max_length=256)
-    regiao = models.ForeignKey("Regiao")
-
+    regiao = models.ForeignKey("Regiao",on_delete=models.DO_NOTHING)
+    geometria = PolygonField()
     def __str__(self) -> str:
         return self.nome
 
 
 class Regiao(models.Model):
-    nome = models.CharField(max_length=100)
+    nome = models.CharField(max_length=100, primary_key=True)
 
     def __str__(self) -> str:
         return self.nome
