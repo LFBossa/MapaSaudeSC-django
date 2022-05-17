@@ -1,0 +1,43 @@
+{% load leaflet_tags %}
+{% load geojson_tags %}
+<html>
+  <head>
+    {% leaflet_js %}
+    {% leaflet_css %}
+    </head>
+    <style>
+
+        .leaflet-container {  /* all maps */
+            width:  800px;
+            height: 600px;
+        }
+    
+        #specialbigmap {
+            height: 800px;
+        }
+    
+        /* Resize the "display_raw" textbox */
+        .django-leaflet-raw-textarea {
+            width: 100%;
+        }
+    
+    </style>
+<body>
+  
+
+<script>
+
+    function map_init(map, options) {
+        var collection = {{ lista_municipios|geojsonfeature:"nome,ibge,regiao:geometria"|safe }};
+        var geojson = L.geoJson(collection).bindPopup(function (layer) {
+        return `<a href='/mapa/cidade/${layer.feature.properties.ibge}'>${layer.feature.properties.nome}</a><br><i>${layer.feature.properties.regiao}</i>`;
+}).addTo(map); 
+        map.addControl(geojson);
+    }
+</script>
+
+{% leaflet_map "yourmap" callback="window.map_init" %}
+
+
+
+</body>

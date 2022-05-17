@@ -1,0 +1,49 @@
+{% load leaflet_tags %}
+{% load geojson_tags %}
+<html>
+  <head>
+    {% leaflet_js %}
+    {% leaflet_css %}
+    </head>
+    <style>
+
+        .leaflet-container {  /* all maps */
+            width:  600px;
+            height: 400px;
+        }
+    
+        #specialbigmap {
+            height: 800px;
+        }
+    
+        /* Resize the "display_raw" textbox */
+        .django-leaflet-raw-textarea {
+            width: 100%;
+        }
+    
+    </style>
+<body>
+<h1>{{cidade.nome}}</h1>
+
+<em>{{cidade.ibge}}</em>
+<p><i>{{cidade.regiao}}</i>
+</p>
+ 
+ 
+
+<script>
+    function map_init(map, options) { 
+       var collection = {{ cidade|geojsonfeature:":geometria,nome,"|safe }};
+        var geojson = L.geoJson(collection.features).addTo(map);
+        //map.fitBounds(polygon.getBounds());
+        map.addControl(geojson);
+        //var polygon = L.polygon(polygon).addTo(map);
+        //map.fitBounds(polygon.getBounds());
+    }
+</script>
+
+{% leaflet_map "yourmap" callback="window.map_init" %}
+
+
+
+</body>

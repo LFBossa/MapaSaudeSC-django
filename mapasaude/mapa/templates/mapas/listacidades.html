@@ -1,0 +1,8 @@
+<ul>
+{% for cidade in lista_municipios %}
+
+<li><a href="{% url 'mapa:detalhecidade' cidade.ibge %}">
+    {{cidade.nome}}
+</a> </li>
+{% endfor %}
+</ul>
