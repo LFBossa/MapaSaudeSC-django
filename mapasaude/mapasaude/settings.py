@@ -25,13 +25,14 @@ SECRET_KEY = 'django-insecure-q*nw2g-vtf!=96-4wfpyv^$+#u8=54d3ecjuy*!0-6zdky9b6a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['labmac01', 'localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'djgeojson',
+    'leaflet',
     'mapa.apps.MapaConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
@@ -124,3 +125,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LEAFLET_CONFIG = {
+    #'SRID': '4326', #', #4326 #3857
+    #'CRS': 'L.CRS.EPSG3857'
+    #'precision': 5
+    'DEFAULT_CENTER': [-27.2958165,-50.5933218],
+    'DEFAULT_ZOOM': 7
+}
