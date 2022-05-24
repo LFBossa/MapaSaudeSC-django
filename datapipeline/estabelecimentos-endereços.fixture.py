@@ -27,7 +27,12 @@ ibge = load_json("output/ibge.json")
 estabelecimento_fixture = [{
     "model": "mapa.Estabelecimento",
     "pk": int(key),
-    "fields": {"nome": valor["NOME FANTASIA"], "endereco": int(key), "tipo": int(valor["TP_UNID"])} }
+    "fields": {
+        "nome": valor["NOME FANTASIA"], 
+        "endereco": int(key), 
+        "tipo": int(valor["TP_UNID"]),
+        "municipio": ibge[ valor["IBGE"] ], # corrige o DV do IBGE
+        } }
     for key, valor in CNES.items()]
 
 def num_or_zero(string: str)-> int:
