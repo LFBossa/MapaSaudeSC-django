@@ -132,5 +132,6 @@ LEAFLET_CONFIG = {
     #'CRS': 'L.CRS.EPSG3857'
     #'precision': 5
     'DEFAULT_CENTER': [-27.2958165,-50.5933218],
-    'DEFAULT_ZOOM': 7
+    'DEFAULT_ZOOM': 7, 
+    'MAX_ZOOM': 18
 }
