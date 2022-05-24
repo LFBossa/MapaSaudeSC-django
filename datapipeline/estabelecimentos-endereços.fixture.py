@@ -37,7 +37,7 @@ def num_or_zero(string: str)-> int:
         return 0
 
 endereco_fixture = [{
-    "model": "mapa.Estabelecimento",
+    "model": "mapa.Endereco",
     "pk": int(key),
     "fields": {
         "logradouro": valor["logradouro"],
