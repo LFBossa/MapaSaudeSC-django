@@ -4,6 +4,7 @@ from djgeojson.fields import PointField, PolygonField
 
 class Estabelecimento(models.Model):
     nome = models.CharField(max_length=200)
+    municipio = models.ForeignKey("Municipio",on_delete=models.DO_NOTHING)
     cnes = models.IntegerField(primary_key=True)
     endereco = models.ForeignKey("Endereco", on_delete=models.CASCADE)
     TIPOS_ESTABELECIMENTO = [(1, "Posto de Saude"),
