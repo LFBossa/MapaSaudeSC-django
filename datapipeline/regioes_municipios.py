@@ -1,4 +1,3 @@
-from textwrap import indent
 from tools import csv_to_dict, load_json, dump_json
 
 #lista_municipios_regiao = csv_to_registros("regioes-saude.csv")
