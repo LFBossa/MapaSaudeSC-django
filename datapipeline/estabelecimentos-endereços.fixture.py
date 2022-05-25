@@ -41,7 +41,7 @@ estabelecimento_fixture = [{
         "numero": num_or_zero(valor["NUMERO"]),
         "bairro": valor["BAIRRO"], 
         "cep": valor["CEP"], 
-        "localizacao": {'type': 'Point', 'coordinates': [float(valor["lat"]), float(valor["lon"])]}
+        "localizacao": {'type': 'Point', 'coordinates': [float(valor["lon"]),float(valor["lat"])]}
         } }
     for key, valor in CNES.items()]
 
