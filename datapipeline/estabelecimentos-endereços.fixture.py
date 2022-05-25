@@ -24,37 +24,27 @@ ibge = load_json("output/ibge.json")
 #     municipio: ibge
 #     localizacao = PointField()
 
-estabelecimento_fixture = [{
-    "model": "mapa.Estabelecimento",
-    "pk": int(key),
-    "fields": {
-        "nome": valor["NOME FANTASIA"], 
-        "endereco": int(key), 
-        "tipo": int(valor["TP_UNID"]),
-        "municipio": ibge[ valor["IBGE"] ], # corrige o DV do IBGE
-        } }
-    for key, valor in CNES.items()]
-
 def num_or_zero(string: str)-> int:
     try: 
         return int(string)
     except:
         return 0
 
-endereco_fixture = [{
-    "model": "mapa.Endereco",
+estabelecimento_fixture = [{
+    "model": "mapa.Estabelecimento",
     "pk": int(key),
     "fields": {
+        "nome": valor["NOME FANTASIA"],  
+        "tipo": int(valor["TP_UNID"]),
+        "municipio": ibge[ valor["IBGE"] ], # corrige o DV do IBGE
         "logradouro": valor["logradouro"],
         "numero": num_or_zero(valor["NUMERO"]),
         "bairro": valor["BAIRRO"], 
-        "cep": valor["CEP"],
-        "municipio": ibge[ valor["IBGE"] ], # corrige o DV do IBGE
+        "cep": valor["CEP"], 
         "localizacao": {'type': 'Point', 'coordinates': [float(valor["lat"]), float(valor["lon"])]}
-    }
+        } }
+    for key, valor in CNES.items()]
 
-} for key, valor in CNES.items()]
+ 
 
-
-dump_json(estabelecimento_fixture, "fixtures/estabelecimentos.json", ensure_ascii=False, indent=1)
-dump_json(endereco_fixture, "fixtures/endereços.json", ensure_ascii=False, indent=1)
+dump_json(estabelecimento_fixture, "fixtures/estabelecimentos.json", ensure_ascii=False, indent=1) 
