@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-q*nw2g-vtf!=96-4wfpyv^$+#u8=54d3ecjuy*!0-6zdky9b6a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['labmac01', 'localhost']
+ALLOWED_HOSTS = ['labmac01', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -33,8 +33,7 @@ ALLOWED_HOSTS = ['labmac01', 'localhost']
 INSTALLED_APPS = [
     'djgeojson',
     'leaflet',
-    'mapa.apps.MapaConfig',
-    'polls.apps.PollsConfig',
+    'mapa.apps.MapaConfig', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
