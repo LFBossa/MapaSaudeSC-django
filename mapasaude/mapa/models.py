@@ -5,8 +5,7 @@ from djgeojson.fields import PointField, PolygonField
 class Estabelecimento(models.Model):
     nome = models.CharField(max_length=200)
     municipio = models.ForeignKey("Municipio",on_delete=models.DO_NOTHING)
-    cnes = models.IntegerField(primary_key=True)
-    endereco = models.ForeignKey("Endereco", on_delete=models.CASCADE)
+    cnes = models.IntegerField(primary_key=True) 
     TIPOS_ESTABELECIMENTO = [(1, "Posto de Saude"),
                              (2, "Centro de Saude/Unidade Basica"),
                              (4, "Policlinica"),
@@ -46,23 +45,17 @@ class Estabelecimento(models.Model):
                              (85, "Centro de Imunizacao"),
                              ]
     tipo = models.IntegerField(choices=TIPOS_ESTABELECIMENTO)
+    logradouro = models.CharField(max_length=250)
+    numero = models.IntegerField()
+    bairro = models.CharField(max_length=100)
+    cep = models.CharField(max_length=8)
+    localizacao = PointField()
 
     def __str__(self):
         return self.nome + f" (CNES {self.cnes})"
 # Create your models here.
 
-
-class Endereco(models.Model):
-    cnes = models.IntegerField(primary_key=True)
-    logradouro = models.CharField(max_length=250)
-    numero = models.IntegerField()
-    bairro = models.CharField(max_length=100)
-    cep = models.CharField(max_length=8)
-    municipio = models.ForeignKey("Municipio",on_delete=models.DO_NOTHING)
-    localizacao = PointField()
-
-    def __str__(self) -> str:
-        return f"{self.logradouro}, {self.numero} | {self.bairro}"
+ 
 
 
 class Municipio(models.Model):
