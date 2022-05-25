@@ -3,112 +3,128 @@
   "model": "mapa.Regiao",
   "pk": "Alto Uruguai Catarinense",
   "fields": {
-   "nome": "Alto Uruguai Catarinense"
+   "nome": "Alto Uruguai Catarinense",
+   "cor": "#ffa87d"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Alto Vale do Itajaí",
   "fields": {
-   "nome": "Alto Vale do Itajaí"
+   "nome": "Alto Vale do Itajaí",
+   "cor": "#4c67c2"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Alto Vale do Rio do Peixe",
   "fields": {
-   "nome": "Alto Vale do Rio do Peixe"
+   "nome": "Alto Vale do Rio do Peixe",
+   "cor": "#ffa87d"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Carbonífera",
   "fields": {
-   "nome": "Carbonífera"
+   "nome": "Carbonífera",
+   "cor": "#20a548"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Extremo Oeste",
   "fields": {
-   "nome": "Extremo Oeste"
+   "nome": "Extremo Oeste",
+   "cor": "#76e598"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Extremo Sul Catarinense",
   "fields": {
-   "nome": "Extremo Sul Catarinense"
+   "nome": "Extremo Sul Catarinense",
+   "cor": "#20a548"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Foz do Rio Itajaí",
   "fields": {
-   "nome": "Foz do Rio Itajaí"
+   "nome": "Foz do Rio Itajaí",
+   "cor": "#ff0066"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Grande Florianópolis",
   "fields": {
-   "nome": "Grande Florianópolis"
+   "nome": "Grande Florianópolis",
+   "cor": "#c9c9c9"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Laguna",
   "fields": {
-   "nome": "Laguna"
+   "nome": "Laguna",
+   "cor": "#20a548"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Meio Oeste",
   "fields": {
-   "nome": "Meio Oeste"
+   "nome": "Meio Oeste",
+   "cor": "#ffa87d"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Médio Vale do Itajaí",
   "fields": {
-   "nome": "Médio Vale do Itajaí"
+   "nome": "Médio Vale do Itajaí",
+   "cor": "#4c67c2"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Nordeste",
   "fields": {
-   "nome": "Nordeste"
+   "nome": "Nordeste",
+   "cor": "#8539bd"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Oeste",
   "fields": {
-   "nome": "Oeste"
+   "nome": "Oeste",
+   "cor": "#76e598"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Planalto Norte",
   "fields": {
-   "nome": "Planalto Norte"
+   "nome": "Planalto Norte",
+   "cor": "#8539bd"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Serra Catarinense",
   "fields": {
-   "nome": "Serra Catarinense"
+   "nome": "Serra Catarinense",
+   "cor": "#ffa87d"
   }
  },
  {
   "model": "mapa.Regiao",
   "pk": "Xanxerê",
   "fields": {
-   "nome": "Xanxerê"
+   "nome": "Xanxerê",
+   "cor": "#76e598"
   }
  }
 ]
