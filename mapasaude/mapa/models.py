@@ -1,6 +1,8 @@
 from django.db import models
 from djgeojson.fields import PointField, PolygonField
 
+import re
+
 
 class Estabelecimento(models.Model):
     nome = models.CharField(max_length=200)
@@ -68,7 +70,12 @@ class Municipio(models.Model):
 
 
 class Regiao(models.Model):
+    def valida_cor(cor: str):
+        if not re.match("#[0-9A-F]{6}", cor):
+            raise ValueError("Cor precisa ser no formato hexadeximal RGB.")
+    
     nome = models.CharField(max_length=100, primary_key=True)
+    cor = models.CharField(max_length=7, validators=[valida_cor])
     
     def __str__(self) -> str:
         return self.nome
