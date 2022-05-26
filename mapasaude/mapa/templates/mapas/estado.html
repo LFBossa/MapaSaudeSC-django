@@ -28,9 +28,14 @@
 <script>
 
     function map_init(map, options) {
-        var collection = {{ lista_municipios|geojsonfeature:"nome,ibge,regiao:geometria"|safe }};
-        var geojson = L.geoJson(collection).bindPopup(function (layer) {
-        return `<a href='/mapa/cidade/${layer.feature.properties.ibge}'>${layer.feature.properties.nome}</a><br><i>${layer.feature.properties.regiao}</i>`;
+        var collection = {{ lista_municipios|geojsonfeature:"nome,ibge,regiao,cor:geometria"|safe }};
+        var geojson = L.geoJson(collection, { weight: 0.3,
+        style: function (feature) {
+            return {color: feature.properties.cor};
+        }}).bindPopup(function (layer) {
+        return `<a href='/mapa/cidade/${layer.feature.properties.ibge}'>
+            ${layer.feature.properties.nome}</a><br>
+            <i>${layer.feature.properties.regiao}</i>`;
 }).addTo(map); 
         map.addControl(geojson);
     }
