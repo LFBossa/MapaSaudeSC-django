@@ -8,5 +8,6 @@ urlpatterns = [
     path('cidades/', views.indexcidade, name='listacidades' ), 
     path('cidade/<int:pk>', views.cidadedetalhe, name='detalhecidade'),
     path('estado/', views.estado, name='estado' ), 
+    path('api/estabelecimentos/cidade/<int:pk>', views.EstabelecimentoCidadeAPI, name="estabelecimentocidade")
     #path('regioes')
 ]
