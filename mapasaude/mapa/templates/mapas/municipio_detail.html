@@ -33,8 +33,7 @@
 <em>{{cidade.ibge}}</em>
 <p><i>{{cidade.regiao}}</i>
 </p>
- 
- 
+  
 
 <script>
     function map_init(map, options) { 
@@ -48,7 +47,7 @@
     function load_estabelecimentos(map){
         //var markers = L.contr
         var markers = L.markerClusterGroup();
-        axios.get("http://127.0.0.1:8000/mapa/api/estabelecimentos/cidade/{{cidade.ibge}}").then(
+        axios.get("{% url 'mapa:estabelecimentocidade' cidade.ibge %}").then(
             function (response) { 
                 for(let dado of response.data)
                 {
