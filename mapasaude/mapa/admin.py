@@ -7,4 +7,4 @@ admin.site.register(Municipio, LeafletGeoAdmin)
 
 admin.site.register(Regiao)
 
-admin.site.register(Estabelecimento) 
+admin.site.register(Estabelecimento, LeafletGeoAdmin) 
