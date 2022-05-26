@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    {% block inhead %}{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapa Saúde SC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  
+  </head>
+  <style>
+
+    .leaflet-container {  /* all maps */
+        width:  800px;
+        height: 500px;
+    }
+
+    #specialbigmap {
+        height: 500px;
+    }
+
+    /* Resize the "display_raw" textbox */
+    .django-leaflet-raw-textarea {
+        width: 100%;
+    }
+
+</style>
+  <body> 
+    {% include "mapas/header.html" %}
+      <div class="container">
+        <div class="row justify-content-start">
+          <div class="col-4">
+            {% block sidebar %}{% endblock %}
+          </div>
+          <div class="col-6">
+            {% block conteudo %}{% endblock %}
+          </div>
+        </div>
+      </div>
+      
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>
+    
