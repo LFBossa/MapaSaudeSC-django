@@ -1,13 +1,69 @@
 {% extends "mapas/base.html" %}
 
-{% block conteudo %} 
-<div class="list-group">
-    {% for cidade in lista_municipios %}
+{% block inhead %}
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+{% endblock %}
 
- <a class="list-group-item list-group-item-action" href="{% url 'mapa:detalhecidade' cidade.ibge %}">
-    {{cidade.nome}}
-</a>  
-{% endfor %}
+{% block sidebar %}
+<a href="#F">F</a> Continuar a colocar âncoras
+{% endblock %}
+{% block conteudo %} 
+<div id="app">   
+    {% verbatim %}
+    <div v-for="group, groupName in cidades_por_letra"> 
+        <h1 :id="groupName">{{groupName}}</h1>
+        <div class="list-group">
+    <a class="list-group-item list-group-item-action" v-for="cidade in group" :key="cidade.ibge" :href="cidade.href">
+        {{cidade.nome}}
+        </a></div>
+    {% endverbatim %}
 </div>
+{% endblock %}
+
+{% block preclosebody %}
+
+<script>
+
+function groupBy(array, key){
+  const result = {}
+  array.forEach(item => {
+    if (!result[item[key]]){
+      result[item[key]] = []
+    }
+    result[item[key]].push(item)
+  })
+  return result
+}
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: "{% url 'mapa:detalhecidade' 0 %}",
+    lista_cidades: []
+  }, 
+  computed: {
+    cidades_por_letra(){
+        return groupBy(this.lista_cidades, 'letra')
+    }
+  },
+  methods: {
+      update_dados: function (novosdados){
+          this.lista_cidades = novosdados
+      }
+  }
+})
+axios.get("{% url 'mapa:listacidadesapi' %}").then(
+            function (response) { 
+                var novos_dados = []
+                for(let city of response.data){
+                    city.href = app.message.replace("0", city.ibge)
+                    city.letra = city.nome.normalize("NFD")[0]
+                    novos_dados.push(city)
+                }
+                app.update_dados(novos_dados)
+            })
+
+  </script>
 
 {% endblock %}
