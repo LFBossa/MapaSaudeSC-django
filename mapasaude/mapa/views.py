@@ -34,9 +34,9 @@ def estado(request):
     return render(request, 'mapas/estado.html', {'lista_municipios': gejson} )
 
 def informacoes_estabelecimento(estabelecimento):
-    return  {'coordenadas': estabelecimento.llcoord(), 
+    return  {'coordenadas': estabelecimento.llcoord, 
                     'nome': estabelecimento.nome, 
-                    'endereco': estabelecimento.endereco(), 
+                    'endereco': estabelecimento.endereco, 
                     'cnes': estabelecimento.cnes, 
                     'tipo': estabelecimento.get_tipo_display()}
 
