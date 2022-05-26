@@ -57,6 +57,10 @@ class Estabelecimento(models.Model):
         lon, lat = self.localizacao['coordinates']
         return [lat, lon]
 
+    def endereco(self):
+        strn = "" if self.numero == 0 else f", {self.numero}"
+        return f"{self.logradouro}{strn} - {self.bairro}\n{self.municipio.nome}"
+
     def __str__(self):
         return self.nome + f" (CNES {self.cnes})"
 # Create your models here.
