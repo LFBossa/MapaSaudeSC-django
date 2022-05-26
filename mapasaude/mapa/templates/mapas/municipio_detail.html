@@ -38,11 +38,10 @@
 <script>
     function map_init(map, options) { 
        var collection = {{ cidade|geojsonfeature:":geometria,nome,"|safe }};
-        var geojson = L.geoJson(collection.features).addTo(map);
-        //map.fitBounds(polygon.getBounds());
+        var geojson = L.geoJson(collection.features).addTo(map); 
         map.addControl(geojson);
-        //var polygon = L.polygon(polygon).addTo(map);
-        //map.fitBounds(polygon.getBounds());
+        map.fitBounds(geojson.getBounds());
+        load_estabelecimentos(map)
     }
 </script>
 
