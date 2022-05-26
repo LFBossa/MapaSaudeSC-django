@@ -26,6 +26,7 @@
     
     </style>
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <body>
 <h1>{{cidade.nome}}</h1>
 
@@ -43,6 +44,21 @@
         map.fitBounds(geojson.getBounds());
         load_estabelecimentos(map)
     }
+
+    function load_estabelecimentos(map){
+        //var markers = L.contr
+        var markers = L.markerClusterGroup();
+        axios.get("http://127.0.0.1:8000/mapa/api/estabelecimentos/cidade/{{cidade.ibge}}").then(
+            function (response) { 
+                for(let dado of response.data)
+                {
+                    var marker = L.marker(dado.coordenadas).bindPopup(dado.nome)
+                    markers.addLayer(marker);
+                }
+                map.addLayer(markers);
+            })
+    }
+
 </script>
 
 {% leaflet_map "yourmap" callback="window.map_init" %}
