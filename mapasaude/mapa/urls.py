@@ -5,8 +5,8 @@ from . import views
 app_name = 'mapa'
 
 urlpatterns = [
-    path('cidades', views.indexcidade, name='listacidades' ), 
+    path('cidades/', views.indexcidade, name='listacidades' ), 
     path('cidade/<int:pk>', views.cidadedetalhe, name='detalhecidade'),
-    path('estado', views.estado, name='estado' ), 
+    path('estado/', views.estado, name='estado' ), 
     #path('regioes')
 ]
