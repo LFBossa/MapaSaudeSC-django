@@ -30,5 +30,12 @@ def dump_json(object: dict, path: str, **kwargs):
     with open(path, "w") as fp:
         json.dump(object, fp, **kwargs)
 
+
+def tratatexto(texto: str) -> str:
+    texto_array = texto.title().strip().split(" ")
+    array_processado = [x.lower() if  len(x) < 3 else x for x in texto_array ]  
+    return " ".join(array_processado)
+
 if __name__ == "__main__":
     print(csv_to_dict("datapipeline/regioes-saude.csv", "CODIBGE"))
+
