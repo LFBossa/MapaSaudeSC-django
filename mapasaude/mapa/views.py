@@ -34,7 +34,11 @@ def estado(request):
 def EstabelecimentoCidadeAPI(request,pk):
     #cidade = Municipio.objects.get(pk=pk)
     estabeles = Estabelecimento.objects.filter(municipio=pk)
-    resposta = [ {'coordenadas': x.llcoord(), 'nome': x.nome} for x in estabeles ]
+    resposta = [ {'coordenadas': x.llcoord(), 
+                    'nome': x.nome, 
+                    'endereco': x.endereco(), 
+                    'cnes': x.cnes, 
+                    'tipo': x.get_tipo_display()} for x in estabeles ]
     return JsonResponse(resposta, safe=False)
 
 
