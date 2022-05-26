@@ -59,3 +59,8 @@ def EstabelecimentoTipoAPI(request,tipo):
 def TiposEstabelecimentosAPI(request):
     tipos = [ (x.n, x.nome) for x in TipoEstabelecimento.objects.all() ]
     return JsonResponse(tipos, safe=False)
+
+@cache_page(24 * 60 *60)
+def ListaCidadesAPI(request):
+    lista_cidades = [ {"ibge": x.ibge, "nome": x.nome, "regiao": x.regiao.nome } for x in  Municipio.objects.all() ]
+    return JsonResponse(lista_cidades, safe=False)
