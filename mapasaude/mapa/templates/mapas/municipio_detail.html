@@ -1,38 +1,27 @@
-{% load leaflet_tags %}
-{% load geojson_tags %}
-<html>
-  <head>
-    {% leaflet_js %}
-    {% leaflet_css %}
-    </head>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+{% extends "mapas/base.html" %}
 
-    <style>
+{% load geojson_tags leaflet_tags  %}
 
-        .leaflet-container {  /* all maps */
-            width:  600px;
-            height: 400px;
-        }
-    
-        #specialbigmap {
-            height: 800px;
-        }
-    
-        /* Resize the "display_raw" textbox */
-        .django-leaflet-raw-textarea {
-            width: 100%;
-        }
-    
-    </style>
-    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<body>
+{% block inhead %}
+{% leaflet_js %}
+{% leaflet_css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+
+<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+{% endblock %}
+
+{% block sidebar %}
+
 <h1>{{cidade.nome}}</h1>
 
 <em>{{cidade.ibge}}</em>
 <p><i>{{cidade.regiao}}</i>
 </p>
+
+{% endblock %}
+{% block conteudo %} 
   
 
 <script>
@@ -68,6 +57,4 @@
 
 {% leaflet_map "yourmap" callback="window.map_init" %}
 
-
-
-</body>
+{% endblock %}

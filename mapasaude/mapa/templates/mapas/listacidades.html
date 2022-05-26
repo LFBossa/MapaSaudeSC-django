@@ -1,8 +1,13 @@
-<ul>
-{% for cidade in lista_municipios %}
+{% extends "mapas/base.html" %}
 
-<li><a href="{% url 'mapa:detalhecidade' cidade.ibge %}">
+{% block conteudo %} 
+<div class="list-group">
+    {% for cidade in lista_municipios %}
+
+ <a class="list-group-item list-group-item-action" href="{% url 'mapa:detalhecidade' cidade.ibge %}">
     {{cidade.nome}}
-</a> </li>
+</a>  
 {% endfor %}
-</ul>
+</div>
+
+{% endblock %}

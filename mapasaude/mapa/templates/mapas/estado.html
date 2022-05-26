@@ -1,32 +1,16 @@
-{% load leaflet_tags %}
-{% load geojson_tags %}
-<html>
-  <head>
-    {% leaflet_js %}
-    {% leaflet_css %}
-    </head>
-    <style>
+{% extends "mapas/base.html" %}
 
-        .leaflet-container {  /* all maps */
-            width:  800px;
-            height: 600px;
-        }
-    
-        #specialbigmap {
-            height: 800px;
-        }
-    
-        /* Resize the "display_raw" textbox */
-        .django-leaflet-raw-textarea {
-            width: 100%;
-        }
-    
-    </style>
-<body>
-  
+{% load geojson_tags leaflet_tags  %}
+
+{% block inhead %}
+{% leaflet_js %}
+{% leaflet_css %}
+{% endblock %}
+
+{% block conteudo %} 
+<h1> Mapa SC</h1>
 
 <script>
-
     function map_init(map, options) {
         var collection = {{ lista_municipios|geojsonfeature:"nome,ibge,regiao,cor:geometria"|safe }};
         var geojson = L.geoJson(collection, { weight: 0.3,
@@ -43,6 +27,4 @@
 
 {% leaflet_map "yourmap" callback="window.map_init" %}
 
-
-
-</body>
+{% endblock  %}
