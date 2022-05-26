@@ -4,6 +4,8 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 from django.core.serializers import serialize
+from django.views.decorators.cache import cache_page
+
 
 
 from .models import Estabelecimento, Municipio
@@ -31,14 +33,24 @@ def estado(request):
     gejson = Municipio.objects.all() 
     return render(request, 'mapas/estado.html', {'lista_municipios': gejson} )
 
+def informacoes_estabelecimento(estabelecimento):
+    return  {'coordenadas': estabelecimento.llcoord(), 
+                    'nome': estabelecimento.nome, 
+                    'endereco': estabelecimento.endereco(), 
+                    'cnes': estabelecimento.cnes, 
+                    'tipo': estabelecimento.get_tipo_display()}
+
+@cache_page(24 * 60 * 60)
 def EstabelecimentoCidadeAPI(request,pk):
     #cidade = Municipio.objects.get(pk=pk)
     estabeles = Estabelecimento.objects.filter(municipio=pk)
-    resposta = [ {'coordenadas': x.llcoord(), 
-                    'nome': x.nome, 
-                    'endereco': x.endereco(), 
-                    'cnes': x.cnes, 
-                    'tipo': x.get_tipo_display()} for x in estabeles ]
+    resposta = [informacoes_estabelecimento(x) for x in estabeles ]
     return JsonResponse(resposta, safe=False)
 
+@cache_page(24 * 60 * 60)
+def EstabelecimentoTipoAPI(request,tipo):
+    #cidade = Municipio.objects.get(pk=pk)
+    estabeles = Estabelecimento.objects.filter(tipo=tipo)
+    resposta = [informacoes_estabelecimento(x) for x in estabeles ]
+    return JsonResponse(resposta, safe=False)
 
