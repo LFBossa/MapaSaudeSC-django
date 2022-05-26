@@ -1,0 +1,261 @@
+[
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 1,
+  "fields": {
+   "nome": "Posto de Saude"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 2,
+  "fields": {
+   "nome": "Centro de Saude/Unidade Basica"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 4,
+  "fields": {
+   "nome": "Policlinica"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 5,
+  "fields": {
+   "nome": "Hospital Geral"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 7,
+  "fields": {
+   "nome": "Hospital Especializado"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 15,
+  "fields": {
+   "nome": "Unidade Mista"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 20,
+  "fields": {
+   "nome": "Pronto Socorro Geral"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 21,
+  "fields": {
+   "nome": "Pronto Socorro Especializado"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 22,
+  "fields": {
+   "nome": "Consultorio Isolado"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 32,
+  "fields": {
+   "nome": "Unidade Movel Fluvial"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 36,
+  "fields": {
+   "nome": "Clinica/Centro de Especialidade"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 39,
+  "fields": {
+   "nome": "Unidade de Apoio Diagnóstico e Terapia (Sadt Isolado)"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 40,
+  "fields": {
+   "nome": "Unidade Movel Terrestre"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 42,
+  "fields": {
+   "nome": "Unidade Movel de Nivel Pre-Hospitalar na Area de Urgencia"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 43,
+  "fields": {
+   "nome": "Farmacia"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 50,
+  "fields": {
+   "nome": "Unidade de Vigilancia em Saude"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 60,
+  "fields": {
+   "nome": "Cooperativa ou Empresa de Cessao de Trabalhadores na Saude"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 62,
+  "fields": {
+   "nome": "Hospital/Dia - Isolado"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 67,
+  "fields": {
+   "nome": "Laboratorio Central de Saude Publica Lacen"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 68,
+  "fields": {
+   "nome": "Central de Gestao em Saude"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 69,
+  "fields": {
+   "nome": "Centro de Atencao Hemoterapia e ou Hematologica"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 70,
+  "fields": {
+   "nome": "Centro de Atencao Psicossocial"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 71,
+  "fields": {
+   "nome": "Centro de Apoio a Saude da Familia"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 72,
+  "fields": {
+   "nome": "Unidade de Atencao a Saude Indigena"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 73,
+  "fields": {
+   "nome": "Pronto Atendimento"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 74,
+  "fields": {
+   "nome": "Polo Academia da Saude"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 75,
+  "fields": {
+   "nome": "Telessaude"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 76,
+  "fields": {
+   "nome": "Central de Regulacao Medica Das Urgencias"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 77,
+  "fields": {
+   "nome": "Servico de Atencao Domiciliar Isolado (Home Care)"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 78,
+  "fields": {
+   "nome": "Unidade de Atencao em Regime Residencial"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 79,
+  "fields": {
+   "nome": "Oficina Ortopedica"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 80,
+  "fields": {
+   "nome": "Laboratorio de Saude Publica"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 81,
+  "fields": {
+   "nome": "Central de Regulacao do Acesso"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 82,
+  "fields": {
+   "nome": "Central de Notificacao,Captacao e Distrib de Orgaos Estadual"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 83,
+  "fields": {
+   "nome": "Polo de Prevencao de Doencas e Agravos e Promocao da Saude"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 84,
+  "fields": {
+   "nome": "Central de Abastecimento"
+  }
+ },
+ {
+  "model": "mapa.TipoEstabelecimento",
+  "pk": 85,
+  "fields": {
+   "nome": "Centro de Imunizacao"
+  }
+ }
+]
