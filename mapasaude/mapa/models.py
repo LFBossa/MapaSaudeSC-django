@@ -53,10 +53,12 @@ class Estabelecimento(models.Model):
     cep = models.CharField(max_length=8)
     localizacao = PointField()
 
+    @property
     def llcoord(self):
         lon, lat = self.localizacao['coordinates']
         return [lat, lon]
 
+    @property
     def endereco(self):
         strn = "" if self.numero == 0 else f", {self.numero}"
         return f"{self.logradouro}{strn} - {self.bairro}\n{self.municipio.nome}"
@@ -73,6 +75,11 @@ class Municipio(models.Model):
     nome = models.CharField(max_length=256)
     regiao = models.ForeignKey("Regiao",on_delete=models.DO_NOTHING)
     geometria = PolygonField()
+    
+    @property
+    def cor(self):
+        return self.regiao.cor
+
     def __str__(self) -> str:
         return self.nome
 
