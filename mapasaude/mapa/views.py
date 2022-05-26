@@ -23,10 +23,8 @@ def indexcidade(request):
     return render(request, 'mapas/listacidades.html', context)
 
 def cidadedetalhe(request, pk):
-    cidade = Municipio.objects.get(pk=pk)
-    estabeles = Estabelecimento.objects.filter(municipio=pk) 
-    context = {'cidade': cidade, 
-    'estabelecimentos': estabeles}
+    cidade = Municipio.objects.get(pk=pk) 
+    context = {'cidade': cidade,  }
     return render(request, 'mapas/municipio_detail.html', context)
 
 def estado(request):
