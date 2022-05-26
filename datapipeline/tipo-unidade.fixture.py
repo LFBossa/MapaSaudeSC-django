@@ -1,13 +1,17 @@
 import csv
+from tools import tratatexto, csv_to_registros, dump_json
 
 
-def tratatexto(texto: str) -> str:
-    texto_array = texto.title().strip().split(" ")
-    array_processado = [x.lower() if  len(x) < 3 else x for x in texto_array ]  
-    return " ".join(array_processado)
+tipos = csv_to_registros('input/tipo_unidade.csv')
 
+print(tipos)
 
-with open('input/tipo_unidade.csv') as fp:
-    reader = csv.DictReader(fp)
-    for row in reader:
-        print(f'({row["cod"]} , \"{tratatexto(row["tipo_unidade"])}\"),')
+tipos_fixture = [{
+    "model": "mapa.TipoEstabelecimento",
+    "pk": int(x["cod"]),
+    "fields": { 
+        "nome": tratatexto(x["tipo_unidade"])
+    }
+} for x in tipos]  
+
+dump_json(tipos_fixture, 'fixtures/tipos.json', ensure_ascii=False, indent=1)
