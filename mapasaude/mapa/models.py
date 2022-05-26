@@ -53,6 +53,10 @@ class Estabelecimento(models.Model):
     cep = models.CharField(max_length=8)
     localizacao = PointField()
 
+    def llcoord(self):
+        lon, lat = self.localizacao['coordinates']
+        return [lat, lon]
+
     def __str__(self):
         return self.nome + f" (CNES {self.cnes})"
 # Create your models here.
