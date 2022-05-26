@@ -8,7 +8,7 @@ from django.views.decorators.cache import cache_page
 
 
 
-from .models import Estabelecimento, Municipio
+from .models import Estabelecimento, Municipio, TipoEstabelecimento
 
 
 class ListaCidade(generic.ListView):
@@ -26,19 +26,20 @@ def indexcidade(request):
 
 def cidadedetalhe(request, pk):
     cidade = Municipio.objects.get(pk=pk) 
+
     context = {'cidade': cidade,  }
     return render(request, 'mapas/municipio_detail.html', context)
 
 def estado(request):
-    gejson = Municipio.objects.all() 
-    return render(request, 'mapas/estado.html', {'lista_municipios': gejson} )
+    todosmunicipios = Municipio.objects.all() 
+    return render(request, 'mapas/estado.html', {'lista_municipios': todosmunicipios} )
 
 def informacoes_estabelecimento(estabelecimento):
     return  {'coordenadas': estabelecimento.llcoord, 
                     'nome': estabelecimento.nome, 
                     'endereco': estabelecimento.endereco, 
                     'cnes': estabelecimento.cnes, 
-                    'tipo': estabelecimento.get_tipo_display()}
+                    'tipo': estabelecimento.tipo.nome}
 
 @cache_page(24 * 60 * 60)
 def EstabelecimentoCidadeAPI(request,pk):
@@ -54,3 +55,7 @@ def EstabelecimentoTipoAPI(request,tipo):
     resposta = [informacoes_estabelecimento(x) for x in estabeles ]
     return JsonResponse(resposta, safe=False)
 
+@cache_page(24 * 60 * 60)
+def TiposEstabelecimentosAPI(request):
+    tipos = [ (x.n, x.nome) for x in TipoEstabelecimento.objects.all() ]
+    return JsonResponse(tipos, safe=False)
