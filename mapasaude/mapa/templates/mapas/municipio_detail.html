@@ -51,7 +51,13 @@
             function (response) { 
                 for(let dado of response.data)
                 {
-                    var marker = L.marker(dado.coordenadas).bindPopup(dado.nome)
+                    var popup = `<p><b>${dado.nome}</b><br>
+                        <span style="margin-top: 1px;">${dado.tipo}</span><br>
+                        <span style="float: right">CNES ${dado.cnes}</span>
+                        </p>
+                    
+                    <p style="clear: both;"><i>${dado.endereco.replace('\n', '<br>')}</i></p>`
+                    var marker = L.marker(dado.coordenadas).bindPopup(popup)
                     markers.addLayer(marker);
                 }
                 map.addLayer(markers);
