@@ -1,5 +1,5 @@
 from multiprocessing import context
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
@@ -30,3 +30,11 @@ def cidadedetalhe(request, pk):
 def estado(request):
     gejson = Municipio.objects.all() 
     return render(request, 'mapas/estado.html', {'lista_municipios': gejson} )
+
+def EstabelecimentoCidadeAPI(request,pk):
+    #cidade = Municipio.objects.get(pk=pk)
+    estabeles = Estabelecimento.objects.filter(municipio=pk)
+    resposta = [ {'coordenadas': x.llcoord(), 'nome': x.nome} for x in estabeles ]
+    return JsonResponse(resposta, safe=False)
+
+
