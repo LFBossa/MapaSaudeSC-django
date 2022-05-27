@@ -9,15 +9,20 @@
   
   </head>
   <style>
-
+    @media ( max-width: 768px) {
+      .leaflet-container {  /* all maps */
+        width:  100%;
+        height: 300px;
+    }
+      
+    }
+    @media ( min-width: 768px) {
     .leaflet-container {  /* all maps */
         width:  800px;
         height: 500px;
     }
-
-    #specialbigmap {
-        height: 500px;
-    }
+  }
+ 
 
     /* Resize the "display_raw" textbox */
     .django-leaflet-raw-textarea {
@@ -27,12 +32,14 @@
 </style>
   <body> 
     {% include "mapas/header.html" %}
-      <div class="container">
+      <div class="container-fluid" id="app">
         <div class="row justify-content-start">
           <div class="col-4">
+            <div class="sticky-top">
             {% block sidebar %}{% endblock %}
           </div>
-          <div class="col-6">
+          </div>
+          <div class="col-6 sticky-top">
             {% block conteudo %}{% endblock %}
           </div>
         </div>
