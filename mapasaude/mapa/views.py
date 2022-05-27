@@ -21,7 +21,7 @@ class DetalheCidade(generic.DetailView):
 
 
 def indexcidade(request):
-    context = {'lista_municipios' : Municipio.objects.order_by('nome')}
+    context = {'lista_municipios' : Municipio.objects.order_by('nome'), 'letras': [chr(x) for x in range(65,65+26)]}
     return render(request, 'mapas/listacidades.html', context)
 
 def cidadedetalhe(request, pk):
