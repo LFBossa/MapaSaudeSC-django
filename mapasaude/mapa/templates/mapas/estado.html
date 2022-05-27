@@ -1,30 +1,47 @@
 {% extends "mapas/base.html" %}
 
-{% load geojson_tags leaflet_tags  %}
+{% load geojson_tags leaflet_tags %}
 
 {% block inhead %}
-{% leaflet_js %}
-{% leaflet_css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+crossorigin=""/>
+
+<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+crossorigin=""></script>
 {% endblock %}
 
-{% block conteudo %} 
+{% block conteudo %}
 <h1> Mapa SC</h1>
 
+<div id="map" style="height: 500px;"></div>
+
 <script>
-    function map_init(map, options) {
-        var collection = {{ lista_municipios|geojsonfeature:"nome,ibge,regiao,cor:geometria"|safe }};
-        var geojson = L.geoJson(collection, { weight: 0.3,
+
+    function map_init() {
+        var map = L.map('map').setView([-27.2958165, -50.5933218], 7);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+        var collection = {{ lista_municipios | geojsonfeature:"nome,ibge,regiao,cor:geometria"| safe }};
+    var geojson = L.geoJson(collection, {
+        weight: 0.3,
         style: function (feature) {
-            return {color: feature.properties.cor};
-        }}).bindPopup(function (layer) {
+            return { color: feature.properties.cor };
+        }
+    }).bindPopup(function (layer) {
         return `<a href='/mapa/cidade/${layer.feature.properties.ibge}'>
             ${layer.feature.properties.nome}</a><br>
             <i>${layer.feature.properties.regiao}</i>`;
-}).addTo(map); 
-        map.addControl(geojson);
+    }).addTo(map);
+    map.addControl(geojson);
     }
+    document.addEventListener('DOMContentLoaded', function() {
+        map_init()
+}, false);
 </script>
 
-{% leaflet_map "yourmap" callback="window.map_init" %}
 
-{% endblock  %}
+{% endblock %}
