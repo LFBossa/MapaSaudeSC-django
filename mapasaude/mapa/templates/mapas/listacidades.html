@@ -6,19 +6,32 @@
 {% endblock %}
 
 {% block sidebar %}
-<a href="#F">F</a> Continuar a colocar âncoras
+
+
+
+
+{% verbatim %}
+<h1 class="my-2">Ordem <select v-model="ordem">
+  <option value="alfabética">alfabética</option>
+  <option value="por regiões">por regiões</option>
+</select></h1>  
+<a v-for="group, groupName in cidade_agrupada" class="btn btn-outline-secondary m-1 px-3" :href="'#' + groupName">{{groupName}}</a>
+ 
+{% endverbatim %}
+
 {% endblock %}
-{% block conteudo %} 
-<div id="app">   
+
+
+{% block conteudo %}  
     {% verbatim %}
-    <div v-for="group, groupName in cidades_por_letra"> 
+    <div v-for="group, groupName in cidade_agrupada"> 
         <h1 :id="groupName">{{groupName}}</h1>
         <div class="list-group">
-    <a class="list-group-item list-group-item-action" v-for="cidade in group" :key="cidade.ibge" :href="cidade.href">
-        {{cidade.nome}}
-        </a></div>
-    {% endverbatim %}
-</div>
+       <a class="list-group-item list-group-item-action" v-for="cidade in group" :key="cidade.ibge" :href="cidade.href">
+        {{cidade.nome}} 
+        </a>
+      </div>
+    {% endverbatim %} 
 {% endblock %}
 
 {% block preclosebody %}
@@ -39,12 +52,28 @@ function groupBy(array, key){
 var app = new Vue({
   el: '#app',
   data: {
-    message: "{% url 'mapa:detalhecidade' 0 %}",
-    lista_cidades: []
+    link: "{% url 'mapa:detalhecidade' 0 %}",
+    lista_cidades: [],
+    ordem: "alfabética"
   }, 
   computed: {
     cidades_por_letra(){
         return groupBy(this.lista_cidades, 'letra')
+    },
+
+    cidades_por_regiao(){
+        unordered = groupBy(this.lista_cidades, 'regiao');
+        ordered = {};
+        ordkeys = Object.keys(unordered).sort()
+        ordkeys.forEach( key => ordered[key] = unordered[key])
+        return ordered
+    }, 
+    cidade_agrupada(){
+      if( this.ordem == "alfabética") {
+        return this.cidades_por_letra
+      } else {
+        return this.cidades_por_regiao
+      }
     }
   },
   methods: {
@@ -57,7 +86,7 @@ axios.get("{% url 'mapa:listacidadesapi' %}").then(
             function (response) { 
                 var novos_dados = []
                 for(let city of response.data){
-                    city.href = app.message.replace("0", city.ibge)
+                    city.href = app.link.replace("0", city.ibge)
                     city.letra = city.nome.normalize("NFD")[0]
                     novos_dados.push(city)
                 }
