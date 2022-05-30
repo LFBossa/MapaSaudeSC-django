@@ -137,3 +137,14 @@ LEAFLET_CONFIG = {
     'DEFAULT_ZOOM': 7, 
     'MAX_ZOOM': 18
 }
+
+LOGGING = {
+    'version': 1,                       # the dictConfig format version
+    'disable_existing_loggers': False,  # retain the default loggers
+    'handlers': {
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'general.log',
+        },
+    },
+}
