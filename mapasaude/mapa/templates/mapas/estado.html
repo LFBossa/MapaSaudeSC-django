@@ -10,6 +10,8 @@ crossorigin=""/>
 <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
 integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
 crossorigin=""></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 {% endblock %}
 
 {% block conteudo %}
@@ -19,13 +21,13 @@ crossorigin=""></script>
 
 <script>
 
-    function map_init() {
+    function map_init(collection) {
         var map = L.map('map').setView([-27.2958165, -50.5933218], 7);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
-            attribution: '© OpenStreetMap'
+            attribution: '© OpenStreetMap | LABMAC'
         }).addTo(map);
-        var collection = {{ lista_municipios | geojsonfeature:"nome,ibge,regiao,cor:geometria"| safe }};
+        //var collection = {{ lista_municipios | geojsonfeature:"nome,ibge,regiao,cor:geometria"| safe }};
     var geojson = L.geoJson(collection, {
         weight: 0.3,
         style: function (feature) {
@@ -39,7 +41,11 @@ crossorigin=""></script>
     map.addControl(geojson);
     }
     document.addEventListener('DOMContentLoaded', function() {
-        map_init()
+        axios.get("{% url 'mapa:estadoapi' %}").then( 
+            function (response) {
+                map_init(response.data)
+            }
+        )
 }, false);
 </script>
 
