@@ -14,5 +14,7 @@ urlpatterns = [
     path('api/estabelecimentos/tipo/<int:tipo>', views.EstabelecimentoTipoAPI, name="estabelecimentotipo"),
     path('api/estabelecimentos/tipo/', views.TiposEstabelecimentosAPI, name="tipos"),
     path('api/cidades/nomes/', views.ListaCidadesAPI, name='listacidadesapi'),
+    path('api/atendimentos/<int:doenca>/ano-<int:ano>', views.DoencaAnoAPI, name='doencaano'),
+    path('api/atendimentos/<int:doenca>/cidade-<int:cidade>', views.DoencaCidadeAPI, name='doencacidade')
     #path('regioes')
 ]
