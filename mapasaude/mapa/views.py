@@ -5,10 +5,8 @@ from django.urls import reverse
 from django.views import generic
 from django.core.serializers import serialize
 from django.views.decorators.cache import cache_page
-
-
-
-from .models import Estabelecimento, Municipio, TipoEstabelecimento
+from django.db.models import Sum, Q
+from .models import Estabelecimento, Municipio, TipoEstabelecimento, Doenca, RegistroAtendimento
 
 
 class ListaCidade(generic.ListView):
@@ -73,3 +71,25 @@ def ListaCidadesAPI(request):
     lista_cidades = [{"ibge": x.ibge, "nome": x.nome,
                       "regiao": x.regiao.nome} for x in Municipio.objects.all()]
     return JsonResponse(lista_cidades, safe=False)
+
+
+@cache_page(24 * 60 * 60)
+def DoencaAnoAPI(request, doenca, ano):
+    atdano = Sum('registroatendimento__atendimentos',
+                 filter=Q(registroatendimento__doenca=doenca,
+                          registroatendimento__referencia__year=ano))
+    query = Municipio.objects.annotate(atendimentos=atdano)
+    doenca = Doenca.objects.get(pk=doenca)
+    resposta = {"doença": doenca.nome, "atendimentos": [(x.ibge,x.atendimentos) for x in query]}
+    return JsonResponse(resposta, safe=False)
+
+@cache_page(24 * 60 * 60)
+def DoencaCidadeAPI(request, doenca, cidade):
+    atendimentos = RegistroAtendimento.objects.filter(
+        doenca=doenca, municipio=cidade)
+    dd = Doenca.objects.get(pk=doenca)
+    municipio = Municipio.objects.get(pk=cidade)
+    registros = {"municipio": municipio.nome, "doença": dd.nome,
+        "registros": [(x.referencia, x.atendimentos) for x in atendimentos ]
+    }
+    return JsonResponse(registros)
