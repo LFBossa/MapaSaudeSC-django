@@ -39,8 +39,8 @@ if __name__ == "__main__":
                 "fields": {
                     "doenca": k,
                     "municipio": ibge,
-                    "referencia": ref2date(reg['referencia']).isoformat(),
-                    "atendimentos": reg[nome]
+                    "referencia": ref2date(reg['referencia']).isoformat()[:10],
+                    "atendimentos": int(reg[nome])
                 }
 
             }
