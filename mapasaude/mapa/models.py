@@ -64,3 +64,16 @@ class Regiao(models.Model):
     
     def __str__(self) -> str:
         return self.nome
+
+
+class Doenca(models.Model):
+    cod = models.IntegerField(primary_key=True)
+    nome = models.CharField(max_length=100)
+
+    
+class RegistroAtendimento(models.Model):
+    chave = models.CharField(max_length=17,primary_key=True) # ibge(7)-ref(6)-doenca(2)
+    doenca = models.ForeignKey("Doenca",on_delete=models.DO_NOTHING)
+    municipio = models.ForeignKey("Municipio",on_delete=models.DO_NOTHING)
+    referencia = models.DateField()
+    atendimentos = models.IntegerField()
